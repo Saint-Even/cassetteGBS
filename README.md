@@ -22,7 +22,7 @@ The design of this pipeline was inspired by watching my daughter drop a tape int
 - Complete reproducibility
 - Detailed logging
 - Multiple run modes for advanced usage on high performance hardware
-Future Directions
+##### Future Directions
 - Configuration for individual runs
 - Automatically run when input data is added
 
