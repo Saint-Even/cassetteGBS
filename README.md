@@ -33,12 +33,12 @@ The design of this pipeline was inspired by watching my daughter drop a tape int
 - Run: a script which invokes the full command that begins the pipeline
 
 ### Cassette
-Within the cassettes directory
-There may be multiple, uniquely named cassette directories 
-these directories must be named  
+Within the cassettes directory  
+There may be multiple, uniquely named cassette directorie  
+These directories must be named  
 cassette_<runName>  
 
-and must contain these four files and one refgenome directory  
+Each must contain one refgenome directory and the following three name-matched files.  
 
 - <runName>_barcodes.txt
 - <runName>_R1.fastq.gz
