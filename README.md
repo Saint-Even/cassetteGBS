@@ -13,11 +13,11 @@
 
 # Cassette GBS
 
-The design of this pipeline was inspired by watching my daughter drop a tape into a cassette player and press play. Only two steps to hear music, that is a user friendly interface! 
+The design of this pipeline was inspired by watching my daughter drop a tape into a cassette player and press play. Only two steps to hear music, a truly user friendly interface! 
 
 ### Features
 - GBS processing at scale
-- Run setup designed for greatest possible simplicity
+- Run setup designed for greatest possible simplicity (1 2 3 Music!)
 - Massive process parallelization to maximize hardware usage and speed
 - Complete reproducibility
 - Detailed logging
