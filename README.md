@@ -36,7 +36,6 @@ The design of this pipeline was inspired by watching my daughter drop a tape int
 Within the cassettes directory
 There may be multiple, uniquely named cassette directories 
 these directories must be named  
-
 cassette_<runName>  
 
 and must contain these four files and one refgenome directory  
@@ -50,8 +49,8 @@ and must contain these four files and one refgenome directory
 ### Key
 Within the keys directory
 For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette  
-
-- key_<runName>
+  
+key_<runName>  
 
 ### Run
 `./run.sh`  
@@ -70,12 +69,12 @@ in a plaintext file named <runName>_barcodes.txt
 
 To create the snakemake environment required for run.sh  
 In the envs directory run  
-`conda env create --file snakemake.yaml`
+`conda env create --file snakemake.yaml`  
 This can take quite a long time to complete. 
 
-before calling run.sh activate the snakemake environment with  
+Before calling run.sh activate the snakemake environment with:  
 `conda activate snakemake`  
-then  
+then execute  
 `./run.sh`  
 All processing conda environment requirements are built into the snakemake rules
 
@@ -105,9 +104,8 @@ then after indexing you will have
 - `SRG_chr1H.fasta.s`
 
 To exclude the integer set the config settings as:  
-
-- `refGenA: SRG_chr`
-- `refGenB: H.fasta`
+`refGenA: SRG_chr`  
+`refGenB: H.fasta`
 
 ### Advanced use:
 *The data handling of cassetteGBS was designed to keep all data and logs fully separated and thus independent, there are variables in the snakefile that activate modes where the single key restriction can be removed, allowing multiple simultaneous runs to be selected by the key files in the keys dir. Another mode allows keyless activation which will simultaneously run every cassette in the cassettes dir. Once a user has advanced familiarity with this pipeline in standard operation they will also have found where these variables are located.  
