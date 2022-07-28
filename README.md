@@ -35,21 +35,21 @@ The design of this pipeline was inspired by watching my daughter drop a tape int
 ### Cassette
 Within the cassettes directory
 There may be multiple, uniquely named cassette directories 
-these directories must be named cassette_\<runName> and must contain these four files and one refgenome directory
-- \<runName>_barcodes.txt
-- \<runName>_R1.fastq.gz
-- \<runName>_R2.fastq.gz
+these directories must be named cassette_<runName> and must contain these four files and one refgenome directory
+- <runName>_barcodes.txt
+- <runName>_R1.fastq.gz
+- <runName>_R2.fastq.gz
 - runConfig.yaml
 - refgenome
 
 ### Key
 Within the keys directory
 For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette
-- key_\<runName>
+- key_<runName>
 
 ### Run
 `./run.sh`
-It is that easy
+It is that easy.
 open and edit the the run script to set the number of cores which snakemake can use. There are multiple run modes available for testing and diagnostics. 
 
 ### Notes
@@ -57,8 +57,8 @@ Individualized run configuration by runConfig.yaml is not in use at this time, a
 
 #### barcodes file specifications
 	per fastGBS V2 barcode specifications
-	\<barcode>\<tab>\<varietyName>\<newline>
-	in a plaintext file named \<runName>_barcodes.txt
+	<barcode><tab><varietyName><newline>
+	in a plaintext file named <runName>_barcodes.txt
 
 #### conda environments
 
@@ -87,19 +87,19 @@ Within each cassette directory the refgenome directory could contain a complete 
 
 In the config file set the refgenome name settings to exclude the integer, this allows the pipeline processes to sense the number of chromosomes to process. 
 for example, if of chromosomes 1-7 you have a chromosome 1 file named 
-`SRG_chr1H.fasta` 
+- `SRG_chr1H.fasta` 
 then after indexing you will have 
-`SRG_chr1H.fasta`
-`SRG_chr1H.fasta.amb`
-`SRG_chr1H.fasta.ann`
-`SRG_chr1H.fasta.bwt`
-`SRG_chr1H.fasta.fai`
-`SRG_chr1H.fasta.pac`
-`SRG_chr1H.fasta.s`
+- `SRG_chr1H.fasta`
+- `SRG_chr1H.fasta.amb`
+- `SRG_chr1H.fasta.ann`
+- `SRG_chr1H.fasta.bwt`
+- `SRG_chr1H.fasta.fai`
+- `SRG_chr1H.fasta.pac`
+- `SRG_chr1H.fasta.s`
 
 To exclude the integer set the config settings as:
-`refGenA: SRG_chr`
-`refGenB: H.fasta`
+- `refGenA: SRG_chr`
+- `refGenB: H.fasta`
 
 ### Advanced use:
 *The data handling of cassetteGBS was designed to keep all data and logs fully separated and thus independent, there are variables in the snakefile that activate modes where the single key restriction can be removed, allowing multiple simultaneous runs to be selected by the key files in the keys dir. Another mode allows keyless activation which will simultaneously run every cassette in the cassettes dir. Once a user has advanced familiarity with this pipeline in standard operation they will also have found where these variables are located.
