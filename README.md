@@ -63,6 +63,8 @@ Individualized run configuration by runConfig.yaml is not in use at this time, a
 #### barcodes file specifications
 per fastGBS V2 barcode specifications. Where each line is  
 <barcode><tab><varietyName><newline>  
+<varietyName> should contain only simple charcters:letters, numbers, _ and -  
+	do not use ;/()<space> or other special characters.  
 in a plaintext file named <runName>_barcodes.txt
 
 #### conda environments
@@ -111,3 +113,27 @@ To exclude the integer set the config settings as:
 *The data handling of cassetteGBS was designed to keep all data and logs fully separated and thus independent, there are variables in the snakefile that activate modes where the single key restriction can be removed, allowing multiple simultaneous runs to be selected by the key files in the keys dir. Another mode allows keyless activation which will simultaneously run every cassette in the cassettes dir. Once a user has advanced familiarity with this pipeline in standard operation they will also have found where these variables are located.  
   
 Snakemake will automatically saturate only the cores provided by the run script parameter. With many pipelines, all the cores provided will remain in use for the majority of the run, but various runs will be processing at any stage. This differs from the individual run, which has parallel processing and core saturation but only within a single stage of the run. Be very aware of the memory and disk space and runtime demands when operating in these expanded parallel modes. Extreme demands against worldclass mainframe hardware are possible. The purpose of this software is to redefine GBS at scale. Have fun!
+
+
+### Order of checkpoints as filed, ...add numeric order of arrival
+done.alignReads
+done.callVariants
+done.cleanSamples
+done.copyResults
+done.demultiplexReads_0
+done.demultiplexReads_1
+done.demultiplexReads_2
+done.demultiplexReads_3
+done.demultiplexReads_4
+done.demultiplexReads_5
+done.demultiplexReads_6
+done.demultiplexReads_7
+done.demultiplexReads_all
+done.fastQC
+done.finalize
+done.initialize
+done.mergeVariants
+done.multiQC
+done.prepareMerge
+done.removeAdaptors
+done.setup
