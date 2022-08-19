@@ -13,17 +13,18 @@
 #eg, if of chromosomes 1-7 you have a chromosome 1 file named 
 #SRG_chr1H.fasta 
 #then set A as before and B as after the integer refGenA: SRG_chr and refGenB: H.fasta
+
 refGenA: SRG_chr
 refGenB: H.fasta
 
 ####FastQC settings####.
 #set the number of threads to assign to the fastqc process
-qcThreads: 2
+qcThreads: 6
 
 ####demultiplex settings####.
 #set the number of processes to use for the demultiplexing process
 #the sabre barcode file will be divided and a sabre will be called on each file 
-sabreParallel: 4
+sabreParallel: 8
 
 ####cutadapt settings####
 #try to provide precise adaptors
@@ -43,13 +44,13 @@ stdevThreshold: 2
 
 ####alignments settings####..
 #set threads to be used by each bwa process
-bwaThreads: 2
+bwaThreads: 4
 #set threads to be used by each process in the series of deduplication calls
-deDupThreads: 2
+deDupThreads: 4
 
 ####platypus settings####.
 #set threads to be used by each platypus process
-platThreads: 2
+platThreads: 8
 #set min supporting reads for a variant
 minReads: 2
 #illumina specific settings for platypus step
@@ -59,14 +60,14 @@ minBaseQual: 20
 
 ####merge settings####..
 #set threads to be used by each process in the series of merge preparation indexing calls
-prepThreads: 2
+prepThreads: 4
 #set threads to be used by bcftools concatenate 
-mergeThreads: 3
+mergeThreads: 4
 
 ####impute settings####
 #vcftools filtering before imputation
 max-missing: 0.2
 minorAlleleFreq: 0.01
 #beagle memory allocation, Gb
-beagleXmx: 8
+beagleXmx: 16
 

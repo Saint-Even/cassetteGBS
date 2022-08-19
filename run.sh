@@ -2,9 +2,9 @@
 echo "Begin: run.sh"
 
 #Run options
-#set type to: run, testRun, produceDAG, showSteps
+#set type to: run, testRun, produceDAG, showSteps, reRunInc, ...cluster
 type=run
-cores=6
+cores=24
 
 echo "Run Mode is set to: ${type}"
 echo "Snakemake will use up to: ${cores} cores"
@@ -15,6 +15,19 @@ if [ ${type} == "run" ]; then
         --cores ${cores} \
         --printshellcmds \
 	--keep-going \
+        --use-conda \
+        --conda-frontend conda \
+        all \
+	> logs/output.log \
+	2> logs/output2.log
+fi
+
+if [ ${type} == "reRunInc" ]; then
+    snakemake \
+        --cores ${cores} \
+        --printshellcmds \
+	--keep-going \
+	--rerun-incomplete \
         --use-conda \
         --conda-frontend conda \
         all \
