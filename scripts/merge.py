@@ -15,13 +15,13 @@ getStr= os.path.join(actDir, "chr*H/variants.bcf.sort")
 fileNames= glob.glob(getStr)
 fileNames.sort()
 
-print(f"sorted filenames: {fileNames}")
+#print(f"sorted filenames: {fileNames}")
 
 fileStr= ""
 for i in range(0, len(fileNames)):
     fileStr += f"{fileNames[i]} "
 
-print(f"fileStr: {fileStr}")
+#print(f"fileStr: {fileStr}")
 
 #call shell command
 cmdStr= f"bcftools concat --threads {threads} -o {op} -O v {fileStr} 2> {log}"
