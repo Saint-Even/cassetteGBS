@@ -2,17 +2,42 @@
 echo "Begin: run.sh"
 
 #Run options
-#set type to: run, testRun, produceDAG, showSteps, reRunInc, ...cluster
-type=run
+#set type to: run, clusterRun, testRun, produceDAG, showSteps, reRunInc
+type=clusterRun
 cores=24
 
-echo "Run Mode is set to: ${type}"
-echo "Snakemake will use up to: ${cores} cores"
+#cluster qsub settings
+#clCores=32
+jobs=24
 
+echo "Run Mode is set to: ${type}"
+echo "To continue enter y: "
+read cont
+if [ ${cont} != "y" ]; then
+    echo "Exiting the run script. Edit the script to modify modes"
+    exit
+fi
 
 if [ ${type} == "run" ]; then
+    echo "Running..."
     snakemake \
         --cores ${cores} \
+        --printshellcmds \
+	--keep-going \
+        --use-conda \
+        --conda-frontend conda \
+        all \
+	> logs/output.log \
+	2> logs/output2.log
+fi
+
+if [ ${type} == "clusterRun" ]; then
+    echo "Running..."
+    snakemake \
+	--cluster "qsub -m ae -M steven.douglas.holden@gmail.com" \
+	--jobs ${jobs} \
+	--cores \
+	--latency-wait 300 \
         --printshellcmds \
 	--keep-going \
         --use-conda \

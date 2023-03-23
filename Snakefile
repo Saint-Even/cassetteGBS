@@ -26,7 +26,7 @@ rule checkFastqFiles:
         "data/{runName}/fastqFileValidation.txt"
     
     conda:
-        "envs/qc.yaml"
+        "envs/qcCheck.yaml"
     shell:
         '''
         #fastq_info {input.fw} {input.rv} > {output} 2>&1
@@ -48,7 +48,7 @@ rule fastqc:
     log:
         "logs/{runName}/QC/fastQC.log"
     conda:
-        "envs/qc.yaml"
+        "envs/qcFast.yaml"
     threads:
         config["qcThreads"]
     shell:
@@ -63,7 +63,6 @@ rule fastqc:
         
         touch {output}
         '''
-
 rule multiQC:
     input:
         "data/{runName}/done.fastQC"
@@ -72,19 +71,21 @@ rule multiQC:
     log:
         "logs/{runName}/QC/multiQC.log"
     conda:
-        "envs/qc.yaml"
+        "envs/qcMulti.yaml"
     threads:
         config["qcThreads"]
     shell:
         '''
         cd data/{wildcards.runName}/fastQC
+	print "TEST: before multiqc"
 
-        multiqc ./ \
-            2> ../../../{log}
+        multiqc ./ 2> ../../../{log}
 
         if [ $? -eq 0 ]; then
             touch ../../../{output}
         fi
+
+	print "TEST: after multiqc"
 
         '''
 
@@ -137,7 +138,8 @@ def gather_setup(wildcards):
     #return rstr
     
     #    all endpoints
-    ends= ["done.multiQC", "sabreParallelBarcodes/done.parallelBarcodes"]
+    #    ;;;switched done.fastQC for done.multiQC
+    ends= ["done.fastQC", "sabreParallelBarcodes/done.parallelBarcodes"]
     rstr= f"data/{rn}/"+"{ends}"
     return expand(rstr, ends= ends)
 
@@ -879,10 +881,11 @@ rule impute:
         mv {output}.vcf {output}
 
         '''
-    
+
 rule copyResults:
     input:
-        "data/{runName}/variantsImputed.vcf"
+        "data/{runName}/variantsImputed.vcf",
+	"data/{runName}/variantsSummary.txt"
 
     output:
         "data/{runName}/done.copyResults"
