@@ -40,7 +40,7 @@ readlen: 50
 # the calculated value of CUT will be rounded up to an integer,
 # always excludes 0 read samples
 #set threshold as standard deviation below mean 
-stdevThreshold: 1
+stdevThreshold: 2
 
 ####alignments settings####..
 #set threads to be used by each bwa process

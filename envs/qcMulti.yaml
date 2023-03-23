@@ -1,6 +1,4 @@
 channels:
   - bioconda
 dependencies:
-  - fastqc
-  - fastq_utils
   - multiqc
