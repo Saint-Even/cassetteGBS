@@ -1,0 +1,5 @@
+channels:
+  - bioconda
+dependencies:
+  - vcftools =0.1.15
+  - beagle =5.1_24Aug19.3e8

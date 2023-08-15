@@ -1,0 +1,8 @@
+#YAML
+
+#run specific configuration files are not currently in use. 
+#An example of run specific configuration use can be found in 
+#the rule parallelBarcodes
+#the script barcodeSplit.py
+
+specific: thisIsASpecificMessage

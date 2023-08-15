@@ -1,0 +1,73 @@
+#YAML
+
+#name of paired reads files must be of the form:
+#<flowCellLongA55NameAndNumbers>_P<integer>_R<1|2>.fastq.gz
+
+#run specific configuration files are not currently in use. 
+#An example of run specific configuration use can be found in 
+#the rule parallelBarcodes
+#the script barcodeSplit.py
+
+####refgenome name settings####
+#set the refrence genome file names in two parts so that they exclude the integer
+#eg, if of chromosomes 1-7 you have a chromosome 1 file named 
+#SRG_chr1H.fasta 
+#then set A as before and B as after the integer refGenA: SRG_chr and refGenB: H.fasta
+
+refGenA: SRG_chr
+refGenB: H.fasta
+
+####FastQC settings####.
+#set the number of threads to assign to the fastqc process
+qcThreads: 6
+
+####demultiplex settings####.
+#set the number of processes to use for the demultiplexing process
+#the sabre barcode file will be divided and a sabre will be called on each file 
+sabreParallel: 8
+
+####cutadapt settings####
+#try to provide precise adaptors
+adapfor: AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC
+adaprev: AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT
+readlen: 50
+
+####clean samples settings####
+# each sample has a varying number of reads, 
+# all samples having a mean number of reads with a standard deviation
+# a sample with reads less than CUT will be excluded
+# CUT = mean - (standard deviation)*(threshold)  
+# the calculated value of CUT will be rounded up to an integer,
+# always excludes 0 read samples
+#set threshold as standard deviation below mean 
+stdevThreshold: 2
+
+####alignments settings####..
+#set threads to be used by each bwa process
+bwaThreads: 4
+#set threads to be used by each process in the series of deduplication calls
+deDupThreads: 4
+
+####platypus settings####.
+#set threads to be used by each platypus process
+platThreads: 8
+#set min supporting reads for a variant
+minReads: 2
+#illumina specific settings for platypus step
+genIndels: 1
+minMapQual: 20
+minBaseQual: 20
+
+####merge settings####..
+#set threads to be used by each process in the series of merge preparation indexing calls
+prepThreads: 4
+#set threads to be used by bcftools concatenate 
+mergeThreads: 4
+
+####impute settings####
+#vcftools filtering before imputation
+max-missing: 0.2
+minorAlleleFreq: 0.01
+#beagle memory allocation, Gb
+beagleXmx: 16
+
