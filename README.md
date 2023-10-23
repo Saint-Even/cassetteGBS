@@ -59,7 +59,7 @@ There may also be an optional key file, the name of this file is important, but 
 Within the keys directory
 For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette  
   
-key_<runName>  
+`key_<runName>`
 
 ### Run
 `./run.sh`  
