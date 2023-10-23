@@ -42,7 +42,7 @@ Within the cassettes directory There may be multiple, uniquely named cassette di
 Within the cassettes directory  
 There may be multiple, uniquely named cassette directories
 These directories must be named  
-cassette_<runName>  
+'cassette_<runName>'
 
 Each must contain one refgenome directory and the following three name-matched files.  
 
