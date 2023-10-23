@@ -56,9 +56,8 @@ There may also be an optional key file, the name of this file is important, but 
 - `key_<runName>`
 
 ### Key
-Within the keys directory
-For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette  
-  
+Within the keys directory  
+For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette   
 `key_<runName>`
 
 ### Run
@@ -71,7 +70,7 @@ Individualized run configuration by runConfig.yaml is not in use at this time, a
 
 #### barcodes file specifications
 per fastGBS V2 barcode specifications. Where each line is  
-`<barcode><tab><varietyName><newline>`
+`<barcode><tab><varietyName><newline>`  
 `<varietyName>` should contain only simple charcters:letters, numbers, _ and -  
 	do not use ;/()`<space>` or other special characters.  
 within a plaintext file named `<runName>_barcodes.txt`
