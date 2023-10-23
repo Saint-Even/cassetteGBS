@@ -71,10 +71,10 @@ Individualized run configuration by runConfig.yaml is not in use at this time, a
 
 #### barcodes file specifications
 per fastGBS V2 barcode specifications. Where each line is  
-<barcode><tab><varietyName><newline>  
-<varietyName> should contain only simple charcters:letters, numbers, _ and -  
-	do not use ;/()<space> or other special characters.  
-in a plaintext file named <runName>_barcodes.txt
+`<barcode><tab><varietyName><newline>`
+`<varietyName>` should contain only simple charcters:letters, numbers, _ and -  
+	do not use ;/()`<space>` or other special characters.  
+within a plaintext file named `<runName>_barcodes.txt`
 
 #### conda environments
 
