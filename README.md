@@ -46,11 +46,14 @@ These directories must be named
 
 Each must contain one refgenome directory and the following three name-matched files.  
 
-- <runName>_barcodes.txt
-- <runName>_R1.fastq.gz
-- <runName>_R2.fastq.gz
-- runConfig.yaml
-- refgenome
+- `<runName>_barcodes.txt`
+- `<runName>_R1.fastq.gz`
+- `<runName>_R2.fastq.gz`
+- `refgenome`
+
+There may also be an optional key file, the name of this file is important, but its content is not. 
+
+- `key_<runName>`
 
 ### Key
 Within the keys directory
