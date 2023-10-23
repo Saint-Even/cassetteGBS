@@ -7,8 +7,7 @@ type=clusterRun
 cores=24
 
 #cluster qsub settings
-#clCores=32
-jobs=24
+jobs=32
 
 echo "Run Mode is set to: ${type}"
 echo "To continue enter y: "
@@ -34,7 +33,7 @@ fi
 if [ ${type} == "clusterRun" ]; then
     echo "Running..."
     snakemake \
-	--cluster "qsub -m ae -M steven.douglas.holden@gmail.com" \
+	--cluster "qsub" \
 	--jobs ${jobs} \
 	--cores \
 	--latency-wait 300 \
