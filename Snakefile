@@ -104,10 +104,11 @@ rule barcodes:
 #split barcode file into multiple files, set by config parallel
 #this rule pulls a runConfig parameter through input. 
 #and has a runConfig usage example in script
+#"cassettes/cassette_{runName}/runConfig.yaml"
+#removed the requirement to build cassetes around a future feature
 rule parallelBarcodes:
     input:
-        "data/{runName}/sabreBarcodes.txt",
-        "cassettes/cassette_{runName}/runConfig.yaml"
+        "data/{runName}/sabreBarcodes.txt"
     output:
         "data/{runName}/sabreParallelBarcodes/done.parallelBarcodes"
 
@@ -275,7 +276,10 @@ rule removeAdaptors:
             -p {output.p} \
             {input.r1} \
             {input.r2} \
-            > {log} 2>> {log}
+            > {log} 2>> {log} \
+        || (mkdir -p data/{wildcards.runName}/readsRemoved; \
+        mv {input.r1} data/{wildcards.runName}/readsRemoved; \
+        mv {input.r2} data/{wildcards.runName}/readsRemoved)
         '''
 
 def gather_removeAdaptors(wildcards):
@@ -901,6 +905,11 @@ rule copyResults:
         #parallel transfer of large results files to results
         echo "${{files}}" | tr -d '\n' | xargs -d ' ' -I {{}} -P 5 -n 1 rsync -Pavh {{}} results/{wildcards.runName}/
 
+        #move readsRemoved dir over for later processing
+        if [[ -d ${{loc}}/readsRemoved ]]; then
+            mv ${{loc}}/readsRemoved results/{wildcards.runName}
+        fi
+
         #move logs and extract output2.log output.log
         cp data/{wildcards.runName}/variantsSummary.txt logs/{wildcards.runName}/variantsSummary.txt
         cp data/{wildcards.runName}/varietyStats.txt logs/{wildcards.runName}/varietyStats.txt
@@ -956,7 +965,6 @@ checkpoint finalize:
         touch {output}
         '''
 
-
 #############################################
 
 def gather_all(wildcards):
@@ -966,7 +974,7 @@ def gather_all(wildcards):
     #USER set to true to use keys to control which cassettes are to be run
     useKeys = True
     #USER set to true to limit the number of runs to one
-    singleRun = True
+    singleRun = False
 
 
     rn = []
@@ -992,7 +1000,7 @@ def gather_all(wildcards):
     
     #print(f"TEST gather_all runName: {rn}")
 
-    
+
     #create return string
     #   end at step
     #   setup

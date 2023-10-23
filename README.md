@@ -31,10 +31,13 @@ The design of this pipeline was inspired by watching my daughter drop a tape int
 - Cassette: a directory serving as a self-contained unit containing ALL initial inputs
 - Key: a single filename which directs the pipeline to select a specific cassette
 - Run: a script which invokes the full command that begins the pipeline
+- The major calls and processing flow are built from the fastGBS_V2 snp calling pipeline
+	- That documentation and citation is available [here](https://bitbucket.org/jerlar73/fast-gbs_v2/wiki/home)  
+	- This pipeline is an elabouration on theirs in the snakemake dialect, to reduce system demands and accellerate processing by highly parallell processing.
 
 ### Cassette
 Within the cassettes directory  
-There may be multiple, uniquely named cassette directorie  
+There may be multiple, uniquely named cassette directories
 These directories must be named  
 cassette_<runName>  
 
