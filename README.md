@@ -17,7 +17,7 @@ The design of this pipeline was inspired by watching my daughter drop a tape int
 
 ### Features
 - GBS processing at scale
-- Run setup designed for greatest possible simplicity (1 2 3 Music!)
+- Run setup designed for greatest possible simplicity (1 2 Music!)
 - Massive process parallelization to maximize hardware usage and speed
 - Complete reproducibility
 - Detailed logging
@@ -32,24 +32,17 @@ The design of this pipeline was inspired by watching my daughter drop a tape int
 - Key: a single filename which directs the pipeline to select a specific cassette
 - Run: a script which invokes the full command that begins the pipeline
 - The major calls and processing flow are built from the fastGBS_V2 snp calling pipeline
-	- That documentation and citation is available [here](https://bitbucket.org/jerlar73/fast-gbs_v2/wiki/home)  
+	- That documentation and citation is available [here](https://bitbucket.org/jerlar73/fast-gbs_v2/wiki/home)
 	- This pipeline is an elabouration on theirs in the snakemake dialect, to reduce system demands and accellerate processing by highly parallell processing.
 
 ### Cassette
 Within the cassettes directory There may be multiple, uniquely named cassette directories
 
 ### Cassette
-<<<<<<< HEAD
 Within the cassettes directory
-There may be multiple, uniquely named cassette directorie
-These directories must be named
-cassette_<runName>
-=======
-Within the cassettes directory  
 There may be multiple, uniquely named cassette directories
-These directories must be named  
+These directories must be named
 `cassette_<runName>`
->>>>>>> 6666193
 
 Each must contain one refgenome directory and the following three name-matched files.
 
@@ -58,26 +51,15 @@ Each must contain one refgenome directory and the following three name-matched f
 - `<runName>_R2.fastq.gz`
 - `refgenome`
 
-There may also be an optional key file, the name of this file is important, but its content is not. 
+There may also be an optional key file, the name of this file is important, but its content is not.
 
-- `key_<runName>`
+`key_<runName>`
 
 ### Key
-<<<<<<< HEAD
 Within the keys directory
-<<<<<<< HEAD
 For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette
 
-key_<runName>
-=======
-For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette  
-  
-=======
-Within the keys directory  
-For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette   
->>>>>>> e478047a9f5043650d84cb556bc958d514121720
 `key_<runName>`
->>>>>>> 6666193
 
 ### Run
 `./run.sh`
@@ -88,19 +70,11 @@ Open and edit the the run script to set the number of cores which snakemake can 
 Individualized run configuration by runConfig.yaml is not in use at this time, although a single example of its use is available for any users who wish to adapt this. Please use the globalConfig.yaml for adjusting parameters across all pipelines.
 
 #### barcodes file specifications
-<<<<<<< HEAD
 per fastGBS V2 barcode specifications. Where each line is
-<barcode><tab><varietyName><newline>
-<varietyName> should contain only simple charcters:letters, numbers, _ and -
-	do not use ;/()<space> or other special characters.
-in a plaintext file named <runName>_barcodes.txt
-=======
-per fastGBS V2 barcode specifications. Where each line is  
-`<barcode><tab><varietyName><newline>`  
-`<varietyName>` should contain only simple charcters:letters, numbers, _ and -  
-	do not use ;/()`<space>` or other special characters.  
+`<barcode><tab><varietyName><newline>`
+`<varietyName>` should contain only simple charcters:letters, numbers, _ and -
+	do not use ;/()`<space>` or other special characters.
 within a plaintext file named `<runName>_barcodes.txt`
->>>>>>> e478047a9f5043650d84cb556bc958d514121720
 
 #### conda environments
 
@@ -150,25 +124,27 @@ To exclude the integer set the config settings as:
 Snakemake will automatically saturate only the cores provided by the run script parameter. With many pipelines, all the cores provided will remain in use for the majority of the run, but various runs will be processing at any stage. This differs from the individual run, which has parallel processing and core saturation but only within a single stage of the run. Be very aware of the memory and disk space and runtime demands when operating in these expanded parallel modes. Extreme demands against worldclass mainframe hardware are possible. The purpose of this software is to redefine GBS at scale. Have fun!
 
 
-### Order of checkpoints as filed, ...add numeric order of arrival
-done.alignReads
-done.callVariants
-done.cleanSamples
-done.copyResults
-done.demultiplexReads_0
-done.demultiplexReads_1
-done.demultiplexReads_2
-done.demultiplexReads_3
-done.demultiplexReads_4
-done.demultiplexReads_5
-done.demultiplexReads_6
-done.demultiplexReads_7
-done.demultiplexReads_all
-done.fastQC
-done.finalize
-done.initialize
-done.mergeVariants
-done.multiQC
-done.prepareMerge
-done.removeAdaptors
-done.setup
+### Checkpoint flags
+TODO add numeric order of arrival
+
+- done.alignReads
+- done.callVariants
+- done.cleanSamples
+- done.copyResults
+- done.demultiplexReads_0
+- done.demultiplexReads_1
+- done.demultiplexReads_2
+- done.demultiplexReads_3
+- done.demultiplexReads_4
+- done.demultiplexReads_5
+- done.demultiplexReads_6
+- done.demultiplexReads_7
+- done.demultiplexReads_all
+- done.fastQC
+- done.finalize
+- done.initialize
+- done.mergeVariants
+- done.multiQC
+- done.prepareMerge
+- done.removeAdaptors
+- done.setup
