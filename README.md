@@ -63,6 +63,7 @@ There may also be an optional key file, the name of this file is important, but 
 - `key_<runName>`
 
 ### Key
+<<<<<<< HEAD
 Within the keys directory
 <<<<<<< HEAD
 For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette
@@ -71,6 +72,10 @@ key_<runName>
 =======
 For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette  
   
+=======
+Within the keys directory  
+For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette   
+>>>>>>> e478047a9f5043650d84cb556bc958d514121720
 `key_<runName>`
 >>>>>>> 6666193
 
@@ -83,11 +88,19 @@ Open and edit the the run script to set the number of cores which snakemake can 
 Individualized run configuration by runConfig.yaml is not in use at this time, although a single example of its use is available for any users who wish to adapt this. Please use the globalConfig.yaml for adjusting parameters across all pipelines.
 
 #### barcodes file specifications
+<<<<<<< HEAD
 per fastGBS V2 barcode specifications. Where each line is
 <barcode><tab><varietyName><newline>
 <varietyName> should contain only simple charcters:letters, numbers, _ and -
 	do not use ;/()<space> or other special characters.
 in a plaintext file named <runName>_barcodes.txt
+=======
+per fastGBS V2 barcode specifications. Where each line is  
+`<barcode><tab><varietyName><newline>`  
+`<varietyName>` should contain only simple charcters:letters, numbers, _ and -  
+	do not use ;/()`<space>` or other special characters.  
+within a plaintext file named `<runName>_barcodes.txt`
+>>>>>>> e478047a9f5043650d84cb556bc958d514121720
 
 #### conda environments
 
