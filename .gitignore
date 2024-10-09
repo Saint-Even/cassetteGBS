@@ -1,0 +1,14 @@
+#ignore all data contents of empty dirs
+cassettes/*
+data/*
+keys/*
+logs/*
+results/*
+
+#keep all .gitkeep files in the empty dirs, which will retain those dirs
+!*/.gitkeep
+
+#retain example runConfig file
+!cassettes/runConfig.yaml
+
+

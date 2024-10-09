@@ -31,26 +31,48 @@ The design of this pipeline was inspired by watching my daughter drop a tape int
 - Cassette: a directory serving as a self-contained unit containing ALL initial inputs
 - Key: a single filename which directs the pipeline to select a specific cassette
 - Run: a script which invokes the full command that begins the pipeline
+- The major calls and processing flow are built from the fastGBS_V2 snp calling pipeline
+	- That documentation and citation is available [here](https://bitbucket.org/jerlar73/fast-gbs_v2/wiki/home)  
+	- This pipeline is an elabouration on theirs in the snakemake dialect, to reduce system demands and accellerate processing by highly parallell processing.
 
 ### Cassette
+Within the cassettes directory There may be multiple, uniquely named cassette directories
+
+### Cassette
+<<<<<<< HEAD
 Within the cassettes directory
 There may be multiple, uniquely named cassette directorie
 These directories must be named
 cassette_<runName>
+=======
+Within the cassettes directory  
+There may be multiple, uniquely named cassette directories
+These directories must be named  
+`cassette_<runName>`
+>>>>>>> 6666193
 
 Each must contain one refgenome directory and the following three name-matched files.
 
-- <runName>_barcodes.txt
-- <runName>_R1.fastq.gz
-- <runName>_R2.fastq.gz
-- runConfig.yaml
-- refgenome
+- `<runName>_barcodes.txt`
+- `<runName>_R1.fastq.gz`
+- `<runName>_R2.fastq.gz`
+- `refgenome`
+
+There may also be an optional key file, the name of this file is important, but its content is not. 
+
+- `key_<runName>`
 
 ### Key
 Within the keys directory
+<<<<<<< HEAD
 For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette
 
 key_<runName>
+=======
+For simple use there may only be one* key. This is a file which does not need to contain anything but must be named to match a cassette  
+  
+`key_<runName>`
+>>>>>>> 6666193
 
 ### Run
 `./run.sh`
